@@ -24,6 +24,7 @@ int main()
     LogicGame();
 }
 
+//все ок
 void ShowBoard() {
     for (int i = 0; i < SIZE_BOARD; i++) {
         for (int j = 0; j < SIZE_BOARD; j++) {
@@ -39,15 +40,19 @@ int PlayerTurn() {
     while (true)
     {
         cout << "Введите X и Y (слитно, без пробела) -> "; cin >> pl;
-        if (pl <= 33 || pl >= 11) return pl;
-        else cout << "Введено неверное значение, повторите попытку\n";
-        system("cls");
+        if ((0 < pl/10 && pl/10 < 4) && 
+            (0 < pl%10 && pl%10 < 4)) 
+            return pl - 11;
+        else 
+            cout << "Введено неверное значение, повторите попытку\n";
+        //system("cls");
     }
 }
 int ComputerTurn() {
     srand(time(0));
-    return rand()%3*10 + rand() % 3;
+    return (rand()%3)*10 + rand() % 3;
 }
+
 void InicialBoard(int a, char c) {
     int x = a / 10;
     int y = a % 10;
@@ -57,6 +62,7 @@ void InicialBoard(int a, char c) {
     else
         board[x][y] = c;
 }
+
 void LogicGame() {
     ShowBoard();
 
